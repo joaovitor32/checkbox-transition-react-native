@@ -1,0 +1,4 @@
+#Fri Feb 19 14:20:05 ART 2021
+base.0=/home/joao/Imagens/checkbox-react-native/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
