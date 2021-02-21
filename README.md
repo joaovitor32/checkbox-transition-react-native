@@ -14,7 +14,7 @@ npm i checkbox-transition-react-native
 | **`checkedColor`**               | Checkbox color when state is true - HexCode only | none
 | **` uncheckedColor`**               | Checkbox color when state is false - HexCode only | none
 | **`checkHeight`**               | Height of the checkbox | none
-| **`checkWidth=`**               | Width of the checkbox | none
+| **`checkWidth`**               | Width of the checkbox | none
 | **`animationTime`**               | animation duration time | none
 | **`disable`**               | Set is possible to change state of a checkbox | none
 | **`borderColor?`**               | Border color of the checkbox | State == true => checkedColor, State == false => uncheckedColor
