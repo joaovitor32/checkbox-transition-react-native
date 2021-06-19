@@ -19,9 +19,8 @@ npm i checkbox-transition-react-native
 | **`disable`**               | Set is possible to change state of a checkbox | none
 | **`borderColor?`**               | Border color of the checkbox | State == true => checkedColor, State == false => uncheckedColor
 
-#### Linking
 
-##### Android 
+##### Linking Android 
 
 1. Append the following lines to `android/settings.gradle`:
 
