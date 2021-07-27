@@ -1,2 +1,2 @@
 import Checkbox from './src/index';
-export default CheckboxContent;
+export default Checkbox;
