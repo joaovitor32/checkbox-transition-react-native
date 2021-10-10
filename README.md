@@ -1,4 +1,5 @@
 # Checkbox for React Native
+## with color transition
 
 ### Installation
 
