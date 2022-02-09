@@ -77,33 +77,32 @@ and run `pod install` from `ios` folder
 ## Usage 
 
 ```tsx
-import React,{useState} from 'react';
-
-import {View} from 'react-native';
+import React, { useState } from 'react';
+import { View } from 'react-native';
 
 import Checkbox from 'checkbox-transition-react-native'
 
-const CheckboxContent = ()=>{
+const CheckboxContent = (): any => {
+  const [state, setState] = useState<boolean | string>(false);
 
-
-    const [state,setState] = useState<boolean|string>(false);
-
-    return (<View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-        <Checkbox
-            value={state}
-            checkedColor={"#ffc800"}
-            uncheckedColor={"#800080"}
-            checkHeight={170}
-            checkWidth={180}
-            onChange={setState}
-            animationTime={150}
-            disabled={false}
-        />
-    </View>)
-}
-
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Checkbox
+        value={state}
+        checkedColor={'#ffc800'}
+        uncheckedColor={'#800080'}
+        checkHeight={170}
+        checkWidth={180}
+        onChange={setState}
+        animationTime={150}
+        disabled={false}
+      />
+    </View>
+  );
+};
 
 export default CheckboxContent;
+
 ```
 ## Demo
 
