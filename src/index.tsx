@@ -133,6 +133,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   return (
     <View style={[styles.wrapper]}>
       <TouchableOpacity
+        testID="checkbox-button"
         disabled={disabled}
         style={[
           styles.touchable,
