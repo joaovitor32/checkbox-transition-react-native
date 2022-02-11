@@ -67,9 +67,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
       : null;
   };
 
-  const extractBrush = (
-    colorOrBrush: string,
-  ): undefined | (string | number)[] | null => {
+  const extractBrush = useCallback((colorOrBrush: string):
+    | undefined
+    | (string | number)[]
+    | null => {
     const patternReg = /^url\(#(.+?)\)$/;
 
     if (colorOrBrush === 'none' || !colorOrBrush) {
@@ -89,7 +90,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
     } catch (err) {
       throw new Error(`"${colorOrBrush}" is not a valid color or brush`);
     }
-  };
+  }, []);
 
   const interpolateScale = (value: number): void => {
     Animated.timing(anim, {
