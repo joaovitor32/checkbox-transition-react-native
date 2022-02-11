@@ -8,6 +8,8 @@ jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 
 const setState = jest.fn();
 
+jest.setTimeout(60000);
+
 const CarouselComponent = (
   <Checkbox
     value={true}
