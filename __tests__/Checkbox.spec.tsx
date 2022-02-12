@@ -24,30 +24,6 @@ const CarouselComponent = (
 );
 
 describe('Checkbox component', () => {
-  it('Testing if setState mock is being called, --success case', () => {
-    const { getByTestId } = render(CarouselComponent);
-
-    const checkboxTouchable = getByTestId('checkbox-button');
-
-    act(() => {
-      fireEvent.press(checkboxTouchable);
-    });
-
-    expect(setState).toHaveBeenCalled();
-  });
-  it('Testing Checkbox  color change of hexcode to rgb, --success case', async () => {
-    const { getByTestId } = await waitFor(() => render(CarouselComponent));
-
-    const checkboxTouchable = getByTestId('checkbox-button');
-
-    await expect(checkboxTouchable.props.style.borderColor).toBe('#ffc800');
-
-    await act(async () => {
-      await fireEvent.press(checkboxTouchable);
-    });
-
-    await expect(checkboxTouchable.props.style.borderColor).toContain('rgb');
-  });
   it('Testing Checkbox renderization, --success case', () => {
     const { getByTestId } = render(CarouselComponent);
 
@@ -68,5 +44,36 @@ describe('Checkbox component', () => {
 
     expect(checkboxSpin.props.style.transform[0].scale).toBeGreaterThan(0);
     expect(checkboxSpin.props.style.transform[1].rotate).not.toBe('0deg');
+  });
+  it('Testing if setState mock is being called, --success case', async () => {
+    const { getByTestId } = render(CarouselComponent);
+    jest.useFakeTimers();
+    const checkboxTouchable = getByTestId('checkbox-button');
+
+    await act(async () => {
+      await fireEvent.press(checkboxTouchable);
+      jest.advanceTimersByTime(2000);
+    });
+
+    await waitFor(() => {
+      expect(setState).toHaveBeenCalled();
+    });
+  });
+
+  it('Testing Checkbox  color change of hexcode to rgb, --success case', async () => {
+    const { getByTestId } = await waitFor(() => render(CarouselComponent));
+    jest.useFakeTimers();
+    const checkboxTouchable = getByTestId('checkbox-button');
+
+    expect(checkboxTouchable.props.style.borderColor).toBe('#ffc800');
+
+    await act(async () => {
+      await fireEvent.press(checkboxTouchable);
+      jest.advanceTimersByTime(2000);
+    });
+
+    await waitFor(() => {
+      expect(checkboxTouchable.props.style.borderColor).toContain('rgb');
+    });
   });
 });
