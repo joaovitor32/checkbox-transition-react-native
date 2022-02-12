@@ -1,7 +1,9 @@
 {
   "name": "checkbox-transition-react-native",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "private": false,
+  "types": "index.d.ts",
+  "main": "index.tsx",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
