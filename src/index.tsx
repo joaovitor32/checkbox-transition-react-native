@@ -69,25 +69,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
   const extractBrush = useCallback(
     (colorOrBrush: string): undefined | (string | number)[] | null => {
-      const patternReg = /^url\(#(.+?)\)$/;
-
       if (colorOrBrush === 'none' || !colorOrBrush) {
         return null;
       }
 
-      try {
-        const matched = colorOrBrush.match(patternReg);
-        // brush
-        if (matched) {
-          return [1, matched[1]];
-          // todo:
-        }
-        const [r, g, b] = Color(colorOrBrush).rgb().array();
-        setColorCheckbox(`rgb(${r},${g},${b})`);
-        return undefined;
-      } catch (err) {
-        throw new Error(`"${colorOrBrush}" is not a valid color or brush`);
-      }
+      const [r, g, b] = Color(colorOrBrush).rgb().array();
+      setColorCheckbox(`rgb(${r},${g},${b})`);
     },
     [],
   );
