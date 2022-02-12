@@ -53,4 +53,20 @@ describe('Checkbox component', () => {
 
     expect(getByTestId('checkbox-button')).not.toBeNull();
   });
+  it('Testing Checkbox content spin and rotation, --success case', async () => {
+    const { getByTestId } = render(CarouselComponent);
+
+    const checkboxSpin = getByTestId('spin-box');
+    const checkboxTouchable = getByTestId('checkbox-button');
+
+    expect(checkboxSpin.props.style.transform[0].scale).toBe(0);
+    expect(checkboxSpin.props.style.transform[1].rotate).toBe('0deg');
+
+    await act(async () => {
+      await fireEvent.press(checkboxTouchable);
+    });
+
+    expect(checkboxSpin.props.style.transform[0].scale).toBeGreaterThan(0);
+    expect(checkboxSpin.props.style.transform[1].rotate).not.toBe('0deg');
+  });
 });

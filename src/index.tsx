@@ -67,30 +67,30 @@ const Checkbox: React.FC<CheckboxProps> = ({
       : null;
   };
 
-  const extractBrush = useCallback((colorOrBrush: string):
-    | undefined
-    | (string | number)[]
-    | null => {
-    const patternReg = /^url\(#(.+?)\)$/;
+  const extractBrush = useCallback(
+    (colorOrBrush: string): undefined | (string | number)[] | null => {
+      const patternReg = /^url\(#(.+?)\)$/;
 
-    if (colorOrBrush === 'none' || !colorOrBrush) {
-      return null;
-    }
-
-    try {
-      const matched = colorOrBrush.match(patternReg);
-      // brush
-      if (matched) {
-        return [1, matched[1]];
-        // todo:
+      if (colorOrBrush === 'none' || !colorOrBrush) {
+        return null;
       }
-      const [r, g, b] = Color(colorOrBrush).rgb().array();
-      setColorCheckbox(`rgb(${r},${g},${b})`);
-      return undefined;
-    } catch (err) {
-      throw new Error(`"${colorOrBrush}" is not a valid color or brush`);
-    }
-  }, []);
+
+      try {
+        const matched = colorOrBrush.match(patternReg);
+        // brush
+        if (matched) {
+          return [1, matched[1]];
+          // todo:
+        }
+        const [r, g, b] = Color(colorOrBrush).rgb().array();
+        setColorCheckbox(`rgb(${r},${g},${b})`);
+        return undefined;
+      } catch (err) {
+        throw new Error(`"${colorOrBrush}" is not a valid color or brush`);
+      }
+    },
+    [],
+  );
 
   const interpolateScale = (value: number): void => {
     Animated.timing(anim, {
@@ -143,6 +143,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         ]}
         onPress={() => onChangeCheckbox(!value)}>
         <Animated.View
+          testID={'spin-box'}
           style={{
             transform: [{ scale: anim }, { rotate: spin }],
           }}>
