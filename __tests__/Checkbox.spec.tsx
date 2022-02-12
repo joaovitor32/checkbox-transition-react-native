@@ -55,9 +55,9 @@ describe('Checkbox component', () => {
       jest.advanceTimersByTime(2000);
     });
 
-    await waitFor(() => {
-      expect(setState).toHaveBeenCalled();
-    });
+    //await waitFor(() => {
+    expect(setState).toHaveBeenCalled();
+    // });*/
   });
 
   it('Testing Checkbox  color change of hexcode to rgb, --success case', async () => {
@@ -72,8 +72,6 @@ describe('Checkbox component', () => {
       jest.advanceTimersByTime(2000);
     });
 
-    await waitFor(() => {
-      expect(checkboxTouchable.props.style.borderColor).toContain('rgb');
-    });
+    expect(checkboxTouchable.props.style.borderColor).toContain('rgb');
   });
 });
