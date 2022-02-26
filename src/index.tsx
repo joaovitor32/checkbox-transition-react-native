@@ -67,17 +67,14 @@ const Checkbox: React.FC<CheckboxProps> = ({
       : null;
   };
 
-  const extractBrush = useCallback(
-    (colorOrBrush: string): undefined | (string | number)[] | null => {
-      if (colorOrBrush === 'none' || !colorOrBrush) {
-        return null;
-      }
+  const extractBrush = useCallback((colorOrBrush: string): void | null => {
+    if (colorOrBrush === 'none' || !colorOrBrush) {
+      return null;
+    }
 
-      const [r, g, b] = Color(colorOrBrush).rgb().array();
-      setColorCheckbox(`rgb(${r},${g},${b})`);
-    },
-    [],
-  );
+    const [r, g, b] = Color(colorOrBrush).rgb().array();
+    setColorCheckbox(`rgb(${r},${g},${b})`);
+  }, []);
 
   const interpolateScale = (value: number): void => {
     Animated.timing(anim, {

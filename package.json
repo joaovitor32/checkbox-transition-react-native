@@ -1,9 +1,18 @@
 {
   "name": "checkbox-transition-react-native",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "private": false,
-  "types": "index.d.ts",
-  "main": "index.tsx",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "react-native": "src/index.tsx",
+  "types": "lib/typescript/index.d.ts",
+  "files": [
+    "src",
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -11,7 +20,17 @@
     "test": "jest",
     "test:coverage": "jest --coverage --watchAll=false",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "prepublish": "tsc"
+    "prepublish": "tsc",
+    "prepare": "bob build"
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      ["commonjs", {"copyFlow": true}],
+      "module",
+      "typescript"
+    ]
   },
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
@@ -47,11 +66,16 @@
     "jest": "^25.5.4",
     "jest-cli": "^27.5.1",
     "metro-react-native-babel-preset": "^0.59.0",
+    "react-native-builder-bob": "^0.18.2",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
     "react": "16.13.1",
     "react-native": "0.63.4"
-  }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ]
 }
